@@ -11,7 +11,7 @@ BASE_URL = "https://api.llama.fi"
 # --------- Constants --------- #
 
 
-class Llama:
+class DefiLlama:
     """
     DeFi Llama class to act as DeFi Llama's API client.
     All the requests can be made through this class.

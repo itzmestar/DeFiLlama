@@ -1,7 +1,7 @@
 
-__title__ = 'llama'
+__title__ = 'DeFiLlama'
 __description__ = 'Unofficial DeFi Llama API client.'
-__url__ = 'https://github.com/itzmestar/Llama'
+__url__ = 'https://github.com/itzmestar/DeFiLlama'
 __version__ = '1.0.0'
 __build__ = 0x010001
 __author__ = 'Tarique Anwer'

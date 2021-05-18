@@ -3,7 +3,7 @@ import os
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-packages = ['llama']
+packages = ['defillama']
 
 requires = [
     'requests>=2.18.4',
@@ -11,7 +11,7 @@ requires = [
 
 about = {}
 
-with open(os.path.join(here, 'llama', '__version__.py'), mode='r', encoding='utf-8') as f:
+with open(os.path.join(here, 'defillama', '__version__.py'), mode='r', encoding='utf-8') as f:
     exec(f.read(), about)
 
 with open('README.md', mode='r', encoding='utf-8') as f:
