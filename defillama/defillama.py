@@ -96,3 +96,36 @@ class DefiLlama:
         path = f'/tvl/{name}'
 
         return self._get(path)
+    
+
+    @staticmethod
+    def _organize_validation_data(response,input_type:str = 'symbol'):
+        output_dict = {}
+        if input_type == 'symbol':
+            for item in response:
+                output_dict[item['name']] = item['symbol']
+        elif input_type == 'name':
+            for item in response:
+                output_dict[item['symbol']] = item['name']
+
+        return output_dict
+
+    def _get_validation_data(self,input_type:str = 'symbol'):
+
+        path = '/protocols'
+        response = self._get(path)
+
+        return DefiLlama._get_validation_data(response,input_type)
+
+
+
+    def validate_symbol(self, symbol):
+        self._get_validation_data('symbol')
+
+    def validate_name(self, name):
+        self._get_validation_data('name')
+        
+
+
+        
+
