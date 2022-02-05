@@ -100,15 +100,11 @@ class DefiLlama:
 
     @staticmethod
     def _organize_validation_data(response,input_type:str = 'symbol'):
-        output_dict = {}
-        if input_type == 'symbol':
-            for item in response:
-                output_dict[item['name']] = item['symbol']
-        elif input_type == 'name':
-            for item in response:
-                output_dict[item['symbol']] = item['name']
+        output_list = []
+        for item in response:
+            output_list.append(item[input_type])
 
-        return output_dict
+        return output_list
 
     def _get_validation_data(self,input_type:str = 'symbol'):
 
@@ -117,13 +113,20 @@ class DefiLlama:
 
         return DefiLlama._get_validation_data(response,input_type)
 
-
-
     def validate_symbol(self, symbol):
-        self._get_validation_data('symbol')
+        symbol_list = self._get_validation_data('symbol')
+        if symbol in symbol_list:
+            return True
+        else:
+            return False
 
     def validate_name(self, name):
-        self._get_validation_data('name')
+        name_list = self._get_validation_data('name')
+        if name in name_list:
+            return True
+        else:
+            return False
+
         
 
 
