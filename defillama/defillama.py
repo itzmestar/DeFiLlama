@@ -111,7 +111,7 @@ class DefiLlama:
         path = '/protocols'
         response = self._get(path)
 
-        return DefiLlama._get_validation_data(response,input_type)
+        return DefiLlama._organize_validation_data(response,input_type)
 
     def validate_symbol(self, symbol):
         symbol_list = self._get_validation_data('symbol')
@@ -126,6 +126,9 @@ class DefiLlama:
             return True
         else:
             return False
+    
+    def get_protocols_name_list(self):
+        return DefiLlama._get_validation_data('symbol')
 
         
 
