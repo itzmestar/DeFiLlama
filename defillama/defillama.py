@@ -127,9 +127,14 @@ class DefiLlama:
         else:
             return False
     
-    def get_protocols_name_list(self):
-        return DefiLlama._get_validation_data('symbol')
+    def get_symbols_name_dict(self):
+        all_protocols_list = self.get_all_protocols()
+        symbols_name_dict = {}
 
+        for protocol in all_protocols_list:
+            symbols_name_dict[protocol['symbol']] = protocol['name']
+
+        return symbols_name_dict
         
 
 
