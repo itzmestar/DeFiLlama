@@ -127,7 +127,7 @@ class DefiLlama:
         else:
             return False
     
-    def get_symbols_name_dict(self):
+    def get_protocols_symbols_name_dict(self):
         all_protocols_list = self.get_all_protocols()
         symbols_name_dict = {}
 
