@@ -107,3 +107,15 @@ class DefiLlama:
         path = f'/chains/'
 
         return self._get(path)
+
+    def get_chain_tvl(self, chain):
+        """
+        Returns historical values of the TVL for the given chain.
+        Endpoint: GET /charts/{chain}
+
+        :param: chain : the chain to return TVL for, e.g. ethereum
+        :return: JSON response
+        """
+        path = f'/charts/{chain}'
+
+        return self._get(path)
