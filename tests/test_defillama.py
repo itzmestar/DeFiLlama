@@ -38,3 +38,8 @@ class TestDefiLlama:
     def test_get_protocol_tvl(self, llama):
         response = llama.get_protocol_tvl(name='uniswap')
         assert type(response) is float
+
+    # @pytest.mark.skip(reason='TBD')
+    def test_get_chain_tvl(self, llama):
+        response = llama.get_chain_tvl('ethereum')
+        assert type(response) is list
