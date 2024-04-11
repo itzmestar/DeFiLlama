@@ -74,36 +74,42 @@ class DefiLlama:
 
     def get_historical_tvl(self):
         """
-        Returns historical values of the total sum of TVLs from all listed protocols.
-        Endpoint: GET /charts
+        Get Historical TVL of DeFi on all chains
 
         :return: JSON response
         """
-        path = '/charts'
+        path = '/v2/historicalChainTvl'
 
         return self._get(path)
 
-    def get_protocol_tvl(self, name):
+    def get_historical_tvl_chain(self, chain):
         """
-        Returns historical values of the total sum of TVLs from given protocol.
-        Mainly meant to make life easier for users that import data to spreadsheets
-        Endpoint: GET /tvl/{name}
+        Get Historical TVL of a chain
+
+        :return: JSON response
+        """
+        path = f'/v2/historicalChainTvl/{chain}'
+
+        return self._get(path)
+
+    def get_protocol_current_tvl(self, protocol):
+        """
+        Simplified endpoint that only returns a number, the current TVL of a protocol
 
         :param: name : ID of the protocol to get (eg: uniswap, WBTC...).
             This can be obtained from the /protocols endpoint
         :return: JSON response
         """
-        path = f'/tvl/{name}'
+        path = f'/tvl/{protocol}'
 
         return self._get(path)
-    
-    def get_chains(self):
+
+    def get_chains_current_tvl(self):
         """
         Returns list of current TVL of all chains.
-        Endpoint: GET /chain
         
         :return: JSON response
         """
-        path = f'/chains/'
+        path = f'/v2/chains'
 
         return self._get(path)
