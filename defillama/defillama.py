@@ -134,3 +134,81 @@ class DefiLlama:
         path = f'https://yields.llama.fi/chart/{pool}'
 
         return self._get(path, full_url=True)
+
+    # ##### Volumes EPs ###### #
+
+    def get_dexs(self, excludeTotalDataChart=True, excludeTotalDataChartBreakdown=True, dataType='dailyVolume'):
+        """
+        list all dexs
+        """
+        path = '/overview/dexs'
+        params = {
+            'excludeTotalDataChart': excludeTotalDataChart,
+            'excludeTotalDataChartBreakdown': excludeTotalDataChartBreakdown,
+            'dataType': dataType
+        }
+
+        return self._get(path, params=params)
+
+    def get_chain_dexs(self, chain, excludeTotalDataChart=True, excludeTotalDataChartBreakdown=True, dataType='dailyVolume'):
+        """
+        list all dexs filter by chain
+        """
+        path = f'/overview/dexs/{chain}'
+        params = {
+            'excludeTotalDataChart': excludeTotalDataChart,
+            'excludeTotalDataChartBreakdown': excludeTotalDataChartBreakdown,
+            'dataType': dataType
+        }
+
+        return self._get(path, params=params)
+
+    def get_dex_summary(self, protocol, excludeTotalDataChart=True, excludeTotalDataChartBreakdown=True, dataType='dailyVolume'):
+        """
+        get summary of dex volume with historical data
+        """
+        path = f'/summary/dexs/{protocol}'
+        params = {
+            'excludeTotalDataChart': excludeTotalDataChart,
+            'excludeTotalDataChartBreakdown': excludeTotalDataChartBreakdown,
+            'dataType': dataType
+        }
+
+        return self._get(path, params=params)
+
+    def get_options_dexs(self, excludeTotalDataChart=True, excludeTotalDataChartBreakdown=True, dataType='dailyVolume'):
+        """
+        list all options dexs
+        """
+        path = '/overview/options'
+        params = {
+            'excludeTotalDataChart': excludeTotalDataChart,
+            'excludeTotalDataChartBreakdown': excludeTotalDataChartBreakdown,
+            'dataType': dataType
+        }
+
+        return self._get(path, params=params)
+
+    def get_chain_options_dexs(self, chain, excludeTotalDataChart=True, excludeTotalDataChartBreakdown=True, dataType='dailyVolume'):
+        """
+        list all options dexs
+        """
+        path = f'/overview/options/{chain}'
+        params = {
+            'excludeTotalDataChart': excludeTotalDataChart,
+            'excludeTotalDataChartBreakdown': excludeTotalDataChartBreakdown,
+            'dataType': dataType
+        }
+
+        return self._get(path, params=params)
+
+    def get_options_dex_summary(self, protocol, dataType='dailyPremiumVolume'):
+        """
+        get summary of option dex volume with historical data
+        """
+        path = f'/summary/options/{protocol}'
+        params = {
+            'dataType': dataType
+        }
+
+        return self._get(path, params=params)
