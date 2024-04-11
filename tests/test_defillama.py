@@ -61,3 +61,14 @@ class TestDefiLlama:
             assert 'chainId' in data
             break
 
+    def test_get_pools(self, llama):
+        response = llama.get_pools()
+        assert type(response) is dict
+        assert 'status' in response
+        assert 'data' in response
+
+    def test_get_pool(self, llama):
+        response = llama.get_pool('747c1d2a-c668-4682-b9f9-296708a3dd90')
+        assert type(response) is dict
+        assert 'status' in response
+        assert 'data' in response
