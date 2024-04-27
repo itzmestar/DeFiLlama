@@ -117,6 +117,95 @@ class DefiLlama:
 
         return self._get(path)
 
+    # ##### Coins EPs ###### #
+    def get_token_current_prices(self, coins: str, searchWidth: str = '4h'):
+        """
+        Get current prices of tokens by contract address
+        """
+        path = f'/prices/current/{coins}'
+        params = {
+            'searchWidth': searchWidth
+        }
+
+        return self._get(path, params=params)
+
+    def get_token_historical_prices(self, coins: str, timestamp: int, searchWidth: str = '4h'):
+        """
+        Get historical prices of tokens by contract address
+        """
+        path = f'/prices/historical/{timestamp}/{coins}'
+        params = {
+            'searchWidth': searchWidth
+        }
+
+        return self._get(path, params=params)
+
+    def get_batch_historical_prices(self, coins: str, searchWidth: str = '600'):
+        """
+        Get historical prices of tokens by contract address
+        """
+        path = f'https://coins.llama.fi/batchHistorical'
+        params = {
+            'coins': coins,
+            'searchWidth': searchWidth
+        }
+
+        return self._get(path, params=params, full_url=True)
+
+    def get_token_prices_at_intervals(
+            self,
+            coins: str,
+            start: int,
+            end: int,
+            span: int = 0,
+            period: str = '2d',
+            searchWidth: str = '600'
+    ):
+        """
+        Get token prices at regular time intervals
+        """
+        path = f"/chart/{coins}"
+
+        params = {
+            'start': start,
+            'end': end,
+            'span': span,
+            'period': period,
+            'searchWidth': searchWidth
+        }
+
+        return self._get(path, params=params)
+
+    def get_percentage_price_change(self, coins: str, timestamp: int, lookForward: bool = False, period: str = '3w'):
+        """
+        Get percentage change in price over time
+        """
+        path = f"/percentage/{coins}"
+
+        params = {
+            'timestamp': timestamp,
+            'lookForward': lookForward,
+            'period': period
+        }
+
+        return self._get(path, params=params)
+
+    def get_earliest_ts_price(self, coins: str):
+        """
+        Get earliest timestamp price record for coins
+        """
+        path = f"/percentage/{coins}"
+
+        return self._get(path)
+
+    def get_closest_ts_block(self, chain: str, timestamp: int):
+        """
+        Get the closest block to a timestamp
+        """
+        path = f"/block/{chain}/{timestamp}"
+
+        return self._get(path)
+
     # ##### Yields EPs ###### #
 
     def get_pools(self):
