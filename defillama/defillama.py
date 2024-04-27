@@ -212,3 +212,42 @@ class DefiLlama:
         }
 
         return self._get(path, params=params)
+
+    # ##### Fees & Revenue EPs ###### #
+
+    def get_fees(self, excludeTotalDataChart=True, excludeTotalDataChartBreakdown=True, dataType='dailyFees'):
+        """
+                list all protocols along with summaries of their fees & revenue & dataType history data
+        """
+        path = f'/overview/fees'
+        params = {
+            'excludeTotalDataChart': excludeTotalDataChart,
+            'excludeTotalDataChartBreakdown': excludeTotalDataChartBreakdown,
+            'dataType': dataType
+        }
+
+        return self._get(path, params=params)
+
+    def get_fees_chain(self, chain, excludeTotalDataChart=True, excludeTotalDataChartBreakdown=True, dataType='dailyFees'):
+        """
+            list all protocols along with summaries of their fees & revenue & dataType history data by chain
+        """
+        path = f'/overview/fees/{chain}'
+        params = {
+            'excludeTotalDataChart': excludeTotalDataChart,
+            'excludeTotalDataChartBreakdown': excludeTotalDataChartBreakdown,
+            'dataType': dataType
+        }
+
+        return self._get(path, params=params)
+
+    def get_fees_protocol(self, protocol, dataType='dailyFees'):
+        """
+            Get summary of protocol fees and revenue with historical data
+        """
+        path = f'/overview/fees/{protocol}'
+        params = {
+            'dataType': dataType
+        }
+
+        return self._get(path, params=params)
