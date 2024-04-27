@@ -176,6 +176,19 @@ class DefiLlama:
 
         return self._get(path, params=params)
 
+    def get_percentage_price_change(self, coins: str, timestamp: int, lookForward: bool = False, period: str = '3w'):
+        """
+        Get percentage change in price over time
+        """
+        path = f"/percentage/{coins}"
+
+        params = {
+            'timestamp': timestamp,
+            'lookForward': lookForward,
+            'period': period
+        }
+
+        return self._get(path, params=params)
     # ##### Yields EPs ###### #
 
     def get_pools(self):
