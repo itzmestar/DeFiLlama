@@ -117,6 +117,65 @@ class DefiLlama:
 
         return self._get(path)
 
+    # ##### Coins EPs ###### #
+    def get_token_current_prices(self, coins: str, searchWidth: str = '4h'):
+        """
+        Get current prices of tokens by contract address
+        """
+        path = f'/prices/current/{coins}'
+        params = {
+            'searchWidth': searchWidth
+        }
+
+        return self._get(path, params=params)
+
+    def get_token_historical_prices(self, coins: str, timestamp: int, searchWidth: str = '4h'):
+        """
+        Get historical prices of tokens by contract address
+        """
+        path = f'/prices/historical/{timestamp}/{coins}'
+        params = {
+            'searchWidth': searchWidth
+        }
+
+        return self._get(path, params=params)
+
+    def get_batch_historical_prices(self, coins: str, searchWidth: str = '600'):
+        """
+        Get historical prices of tokens by contract address
+        """
+        path = f'https://coins.llama.fi/batchHistorical'
+        params = {
+            'coins': coins,
+            'searchWidth': searchWidth
+        }
+
+        return self._get(path, params=params, full_url=True)
+
+    def get_token_prices_at_intervals(
+            self,
+            coins: str,
+            start: int,
+            end: int,
+            span: int = 0,
+            period: str = '2d',
+            searchWidth: str = '600'
+    ):
+        """
+        Get token prices at regular time intervals
+        """
+        path = f"/chart/{coins}"
+
+        params = {
+            'start': start,
+            'end': end,
+            'span': span,
+            'period': period,
+            'searchWidth': searchWidth
+        }
+
+        return self._get(path, params=params)
+
     # ##### Yields EPs ###### #
 
     def get_pools(self):
