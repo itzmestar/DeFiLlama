@@ -2,7 +2,7 @@
 __title__ = 'DeFiLlama'
 __description__ = 'Unofficial DeFi Llama API client.'
 __url__ = 'https://github.com/itzmestar/DeFiLlama'
-__version__ = '2.1.0'
+__version__ = '2.1.1'
 __build__ = 0x010001
 __author__ = 'Tarique Anwer'
 __author_email__ = 'itzmetariq@gmail.com'
