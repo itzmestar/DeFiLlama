@@ -198,6 +198,14 @@ class DefiLlama:
 
         return self._get(path)
 
+    def get_closest_ts_block(self, chain: str, timestamp: int):
+        """
+        Get the closest block to a timestamp
+        """
+        path = f"/block/{chain}/{timestamp}"
+
+        return self._get(path)
+
     # ##### Yields EPs ###### #
 
     def get_pools(self):
