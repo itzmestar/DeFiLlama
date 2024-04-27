@@ -189,6 +189,15 @@ class DefiLlama:
         }
 
         return self._get(path, params=params)
+
+    def get_earliest_ts_price(self, coins: str):
+        """
+        Get earliest timestamp price record for coins
+        """
+        path = f"/percentage/{coins}"
+
+        return self._get(path)
+
     # ##### Yields EPs ###### #
 
     def get_pools(self):
