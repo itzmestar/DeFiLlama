@@ -110,7 +110,7 @@ class DefiLlama:
     def get_chains_current_tvl(self):
         """
         Returns list of current TVL of all chains.
-        
+
         :return: JSON response
         """
         path = f'/v2/chains'
@@ -330,12 +330,14 @@ class DefiLlama:
 
         return self._get(path, params=params)
 
-    def get_fees_protocol(self, protocol, dataType='dailyFees'):
+    def get_fees_protocol(self, protocol, dataType='dailyFees', excludeTotalDataChart=True, excludeTotalDataChartBreakdown=True):
         """
             Get summary of protocol fees and revenue with historical data
         """
-        path = f'/overview/fees/{protocol}'
+        path = f'/summary/fees/{protocol}'
         params = {
+            'excludeTotalDataChart': excludeTotalDataChart,
+            'excludeTotalDataChartBreakdown': excludeTotalDataChartBreakdown,
             'dataType': dataType
         }
 
