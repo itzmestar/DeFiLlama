@@ -330,14 +330,12 @@ class DefiLlama:
 
         return self._get(path, params=params)
 
-    def get_fees_protocol(self, protocol, dataType='dailyFees', excludeTotalDataChart=True, excludeTotalDataChartBreakdown=True):
+    def get_fees_protocol(self, protocol, dataType='dailyFees'):
         """
             Get summary of protocol fees and revenue with historical data
         """
         path = f'/summary/fees/{protocol}'
         params = {
-            'excludeTotalDataChart': excludeTotalDataChart,
-            'excludeTotalDataChartBreakdown': excludeTotalDataChartBreakdown,
             'dataType': dataType
         }
 
