@@ -61,6 +61,15 @@ class TestDefiLlama:
 
     # ##### Test Coins EPs ###### #
 
+    # ##### Test Stablecoins EPs ###### #
+    def test_get_stablecoins(self, llama):
+        response = llama.get_stablecoins()
+        assert type(response) is dict
+        assert 'peggedAssets' in response
+        assert type(response['peggedAssets']) is list
+
+    # ##### Test Yields EPs ###### #
+
     def test_get_pools(self, llama):
         response = llama.get_pools()
         assert type(response) is dict

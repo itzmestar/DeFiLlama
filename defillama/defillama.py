@@ -206,6 +206,20 @@ class DefiLlama:
 
         return self._get(path)
 
+    # ##### Stablecoins EPs ###### #
+
+    def get_stablecoins(self, include_prices: bool = True):
+        """
+        List all stablecoins along with their circulating amounts
+        """
+        path = "https://stablecoins.llama.fi/stablecoins"
+
+        params = {
+            'includePrices': include_prices
+        }
+
+        return self._get(path, params=params, full_url=True)
+
     # ##### Yields EPs ###### #
 
     def get_pools(self):
