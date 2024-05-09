@@ -1,10 +1,11 @@
 # DeFiLlama
 
-[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/)
-[![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-310/)
+[![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-31014/)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3119/)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-3123/)
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -46,6 +47,17 @@ response = llama.get_all_protocols()
 response = llama.get_protocol(name='uniswap')
 
 ```
+
+Data from stablecoins dashboard
+
+```
+# List all stablecoins along with their circulating amounts
+response = llama.get_stablecoins()
+
+# Get historical mcap sum of all stablecoins in a chain
+response = llama.get_stablecoins_chains_all_historical_mcap_sum(chain='Ethereum', stablecoin_id=1)
+```
+
 -------
 #### Donate & Help maintain the library
 
