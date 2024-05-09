@@ -68,6 +68,27 @@ class TestDefiLlama:
         assert 'peggedAssets' in response
         assert type(response['peggedAssets']) is list
 
+    def test_get_stablecoins_all_historical_mcap_sum(self, llama):
+        response = llama.get_stablecoins_all_historical_mcap_sum(1)
+        assert type(response) is list
+
+    def test_get_stablecoins_chains_all_historical_mcap_sum(self, llama):
+        response = llama.get_stablecoins_chains_all_historical_mcap_sum(chain='Ethereum', stablecoin_id=1)
+        assert type(response) is list
+
+    @pytest.mark.skip(reason='TBD')
+    def test_get_stablecoins_historical_mcap_n_chain_distribution(self, llama):
+        response = llama.get_stablecoins_historical_mcap_n_chain_distribution(stablecoin_id=1)
+        assert True
+
+    def test_get_stablecoins_all_current_mcap_sum(self, llama):
+        response = llama.get_stablecoins_all_current_mcap_sum()
+        assert type(response) is list
+
+    def test_get_stablecoins_historical_prices(self, llama):
+        response = llama.get_stablecoins_historical_prices()
+        assert type(response) is list
+
     # ##### Test Yields EPs ###### #
 
     def test_get_pools(self, llama):
