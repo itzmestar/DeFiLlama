@@ -59,6 +59,38 @@ class TestDefiLlama:
             assert 'chainId' in data
             break
 
+    # ##### Test Coins EPs ###### #
+
+    # ##### Test Stablecoins EPs ###### #
+    def test_get_stablecoins(self, llama):
+        response = llama.get_stablecoins()
+        assert type(response) is dict
+        assert 'peggedAssets' in response
+        assert type(response['peggedAssets']) is list
+
+    def test_get_stablecoins_all_historical_mcap_sum(self, llama):
+        response = llama.get_stablecoins_all_historical_mcap_sum(1)
+        assert type(response) is list
+
+    def test_get_stablecoins_chains_all_historical_mcap_sum(self, llama):
+        response = llama.get_stablecoins_chains_all_historical_mcap_sum(chain='Ethereum', stablecoin_id=1)
+        assert type(response) is list
+
+    @pytest.mark.skip(reason='TBD')
+    def test_get_stablecoins_historical_mcap_n_chain_distribution(self, llama):
+        response = llama.get_stablecoins_historical_mcap_n_chain_distribution(stablecoin_id=1)
+        assert True
+
+    def test_get_stablecoins_all_current_mcap_sum(self, llama):
+        response = llama.get_stablecoins_all_current_mcap_sum()
+        assert type(response) is list
+
+    def test_get_stablecoins_historical_prices(self, llama):
+        response = llama.get_stablecoins_historical_prices()
+        assert type(response) is list
+
+    # ##### Test Yields EPs ###### #
+
     def test_get_pools(self, llama):
         response = llama.get_pools()
         assert type(response) is dict
@@ -71,6 +103,7 @@ class TestDefiLlama:
         assert 'status' in response
         assert 'data' in response
 
+    # ##### Test Volumes EPs ###### #
     def test_get_dexs(self, llama):
         response = llama.get_dexs()
         assert type(response) is dict
@@ -109,6 +142,30 @@ class TestDefiLlama:
 
     def test_get_options_dex_summary(self, llama):
         response = llama.get_options_dex_summary('lyra')
+        assert type(response) is dict
+        assert 'id' in response
+        assert 'name' in response
+        assert 'url' in response
+        assert 'totalDataChart' in response
+
+    # ##### Test Fees & Revenue EPs ###### #
+
+    def test_get_fees(self, llama):
+        response = llama.get_fees()
+        assert type(response) is dict
+        assert 'totalDataChart' in response
+        assert 'totalDataChartBreakdown' in response
+        assert 'protocols' in response
+
+    def test_get_fees_chain(self, llama):
+        response = llama.get_fees_chain(chain='ethereum')
+        assert type(response) is dict
+        assert 'totalDataChart' in response
+        assert 'totalDataChartBreakdown' in response
+        assert 'protocols' in response
+
+    def test_get_fees_protocol(self, llama):
+        response = llama.get_fees_protocol(protocol='lyra')
         assert type(response) is dict
         assert 'id' in response
         assert 'name' in response

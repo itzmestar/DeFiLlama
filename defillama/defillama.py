@@ -206,6 +206,68 @@ class DefiLlama:
 
         return self._get(path)
 
+    # ##### Stablecoins EPs ###### #
+
+    def get_stablecoins(self, include_prices: bool = True):
+        """
+        List all stablecoins along with their circulating amounts
+        """
+        path = "https://stablecoins.llama.fi/stablecoins"
+
+        params = {
+            'includePrices': include_prices
+        }
+
+        return self._get(path, params=params, full_url=True)
+
+    def get_stablecoins_all_historical_mcap_sum(self, stablecoin_id: int):
+        """
+        Get historical mcap sum of all stablecoins
+        """
+        path = "https://stablecoins.llama.fi/stablecoincharts/all"
+
+        params = {
+            'stablecoin': stablecoin_id
+        }
+
+        return self._get(path, params=params, full_url=True)
+
+    def get_stablecoins_chains_all_historical_mcap_sum(self, chain: str, stablecoin_id: int):
+        """
+        Get historical mcap sum of all stablecoins in a chain
+        """
+        path = f"https://stablecoins.llama.fi/stablecoincharts/{chain}"
+
+        params = {
+            'stablecoin': stablecoin_id
+        }
+
+        return self._get(path, params=params, full_url=True)
+
+    def get_stablecoins_historical_mcap_n_chain_distribution(self, stablecoin_id: int):
+        """
+        Get historical mcap & historical chain distribution of a stablecoin
+        """
+        path = f"https://stablecoins.llama.fi/stablecoin/{stablecoin_id}"
+
+        return self._get(path, full_url=True)
+
+    def get_stablecoins_all_current_mcap_sum(self):
+        """
+        Get current mcap sum of all stablecoins on each chain
+        """
+        path = f"https://stablecoins.llama.fi/stablecoinchains"
+
+        return self._get(path, full_url=True)
+
+    def get_stablecoins_historical_prices(self):
+        """
+        Get historical prices of all stablecoins
+        """
+        path = f"https://stablecoins.llama.fi/stablecoinprices"
+
+        return self._get(path, full_url=True)
+
     # ##### Yields EPs ###### #
 
     def get_pools(self):
